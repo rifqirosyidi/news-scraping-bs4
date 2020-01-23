@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import NotesModelForm
 from .models import Note
 
@@ -26,3 +26,11 @@ def list_notes(request):
         'all_notes': all_notes
     }
     return render(request, 'notes/notes_list.html', context)
+
+
+def delete_notes(request, id):
+    note_to_delete = get_object_or_404(Note, pk=id)
+    if request.user == note_to_delete.user:
+        note_to_delete.delete()
+
+    return redirect('/notes/')
