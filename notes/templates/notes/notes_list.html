@@ -8,10 +8,14 @@
     <title>Document</title>
 </head>
 <body>
-
+<ul>
     {% for note in all_notes %}
-        <p>{{ note.title }}</p>
+        <li>
+            {{ note }}
+            <a href="{% url 'notes:update' note.id %}">Update</a>
+            <a href="{% url 'notes:delete' note.id %}">Delete</a>
+        </li>
     {% endfor %}
-
+</ul>
 </body>
 </html>
