@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Get The News</h1>
+    <form action="{% url 'news:scrape' %}" method="POST">
+        {% csrf_token %}
+        <button type="submit">Get News</button>
+    </form>
+
+    <h1>List News</h1>
+    <ul>
+        {% for news in all_news %}
+        <li><p>{{ news }}</p><a href="{{ news.url }}">Check</a></li>
+        <br>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>

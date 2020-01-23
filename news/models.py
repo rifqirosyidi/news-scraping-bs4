@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 class Headline(models.Model):
     title = models.CharField(max_length=120)
-    image = models.ImageField()
+    image = models.ImageField(null=True, blank=True)
     url = models.TextField()
 
     def __str__(self):
