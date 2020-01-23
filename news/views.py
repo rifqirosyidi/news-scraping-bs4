@@ -9,6 +9,7 @@ urllib3.disable_warnings()
 
 
 def news_list(request):
+
     all_news = Headline.objects.all()
     context = {
         'all_news': all_news
